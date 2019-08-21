@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 1</h3>
-                <label for="question1">Example select</label>
+                <label for="question1">How do you feel about cats?</label>
                 <select class="form-control" id="question1">
                     <option>1</option>
                     <option>2</option>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 2</h3>
-                <label for="question2">Example select</label>
+                <label for="question2">How do you feel about dogs?</label>
                 <select class="form-control" id="question2">
                     <option>1</option>
                     <option>2</option>
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 3</h3>
-                <label for="question3">Example select</label>
+                <label for="question3">Are you into video games?</label>
                 <select class="form-control" id="question3">
                     <option>1</option>
                     <option>2</option>
@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 4</h3>
-                <label for="question4">Example select</label>
+                <label for="question4">Are you into the MCU movies?</label>
                 <select class="form-control" id="question4">
                     <option>1</option>
                     <option>2</option>
@@ -72,7 +72,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 5</h3>
-                <label for="question5">Example select</label>
+                <label for="question5">How do you feel about KBBQ?</label>
                 <select class="form-control" id="question5">
                     <option>1</option>
                     <option>2</option>
@@ -83,7 +83,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 6</h3>
-                <label for="question6">Example select</label>
+                <label for="question6">Do you like sushi?</label>
                 <select class="form-control" id="question6">
                     <option>1</option>
                     <option>2</option>
@@ -94,7 +94,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 7</h3>
-                <label for="question7">Example select</label>
+                <label for="question7">How much are you into politics?</label>
                 <select class="form-control" id="question7">
                     <option>1</option>
                     <option>2</option>
@@ -105,7 +105,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 8</h3>
-                <label for="question8">Example select</label>
+                <label for="question8">Do you like In n Out?</label>
                 <select class="form-control" id="question8">
                     <option>1</option>
                     <option>2</option>
@@ -116,7 +116,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 9</h3>
-                <label for="question9">Example select</label>
+                <label for="question9">How fond are you about nature?</label>
                 <select class="form-control" id="question9">
                     <option>1</option>
                     <option>2</option>
@@ -127,7 +127,7 @@
             </div>
             <div class="form-group">
                 <h3>Question 10</h3>
-                <label for="question10">Example select</label>
+                <label for="question10">How likely would you be to live in the city?</label>
                 <select class="form-control" id="question10">
                     <option>1</option>
                     <option>2</option>
@@ -179,12 +179,13 @@
 
                 // If a table is available... tell user they are booked.
                 if (data) {
-                    alert("Yay! You are officially booked!");
+                    alert("Here is your best match!");
+                    console.log(data);
                 }
 
                 // If a table is available... tell user they on the waiting list.
                 else {
-                    alert("Sorry you are on the wait list");
+                    alert("Sorry please try again.");
                 }
 
                 // Clear the form when submitting
