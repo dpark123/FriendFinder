@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -152,6 +152,7 @@
 </html>
 
 <script type="text/javascript">
+
     $(".submit").on("click", function (event) {
         event.preventDefault();
 
@@ -171,22 +172,64 @@
                 $("#question10").val().trim()
             ]
         }
-
         console.log(friendsData);
 
-        $.post("/api/friends", friendsData,
-            function (data) {
+        var scorings = [];
+        var scoringsPlace = [];
 
+        var bestMatch;
+        function getList() {
+            $.get("/api/friends", function (data) {
+
+                var score = 0;
+                console.log(data);
+                console.log(data[0].scores)
+                for (var h = 0; h < data.length; h++) {
+                    for (var i = 0; i < 10; i++) {
+                        score = score + Math.abs(data[h].scores[i] - friendsData.scores[i]);
+                    }
+                    scorings.push(score);
+                    scoringsPlace.push(h);
+
+                }
+                var lowestScore = scorings[0];
+                for (var i = 0; i < scorings.length; i++) {
+                    if (scorings[i] < lowestScore) {
+                        lowestScore = scorings[i];
+                        bestMatch = scoringsPlace[i];
+                    }
+                    console.log(bestMatch)
+                }
                 // If a table is available... tell user they are booked.
+                var bestName = SON.stringify(data[bestMatch].name);
                 if (data) {
-                    alert("Here is your best match!");
-                    console.log(data);
+                    alert("Here is your best match!" + bestName);
                 }
 
                 // If a table is available... tell user they on the waiting list.
                 else {
                     alert("Sorry please try again.");
                 }
+            })
+
+        }
+
+
+        getList();
+
+        $.post("/api/friends", friendsData,
+            function (data) {
+                console.log(data)
+
+                // // If a table is available... tell user they are booked.
+                // if (data) {
+                //     alert("Here is your best match!" + data[bestMatch].name);
+                // }
+
+                // // If a table is available... tell user they on the waiting list.
+                // else {
+                //     alert("Sorry please try again.");
+                // }
 
                 // Clear the form when submitting
 
@@ -205,5 +248,6 @@
 
 
             });
+
     })
 </script>
